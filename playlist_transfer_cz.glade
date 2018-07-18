@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.20.4 -->
+<!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
   <object class="GtkFileFilter" id="m3u_playlists">
@@ -14,8 +14,10 @@
   <object class="GtkWindow" id="mainwindow">
     <property name="can_focus">False</property>
     <property name="resizable">False</property>
-    <property name="title" translatable="yes">Přenos hudby</property>
     <signal name="destroy" handler="quit" swapped="no"/>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
     <child>
       <object class="GtkGrid">
         <property name="visible">True</property>
@@ -35,7 +37,7 @@
             <property name="can_focus">False</property>
             <property name="create_folders">False</property>
             <property name="filter">m3u_playlists</property>
-            <property name="title" translatable="yes">Vyber seznam skladeb k přenesení</property>
+            <property name="title" translatable="yes">Select playlist for transfer</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -77,7 +79,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">start</property>
-            <property name="label" translatable="yes">Použít definovaný adresář s hudbou</property>
+            <property name="label" translatable="yes">Vybrat manuálně adresář s hudbou</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -145,7 +147,7 @@
             <property name="can_focus">False</property>
             <property name="action">select-folder</property>
             <property name="create_folders">False</property>
-            <property name="title" translatable="yes">Vyber svůj adresář s hudbou</property>
+            <property name="title" translatable="yes">Choose your music directory</property>
           </object>
           <packing>
             <property name="left_attach">2</property>
@@ -211,7 +213,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="action">select-folder</property>
-            <property name="title" translatable="yes">Vyber cílovou složku</property>
+            <property name="title" translatable="yes">Choose output folder</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -221,20 +223,19 @@
         </child>
       </object>
     </child>
-    <child type="titlebar">
-      <placeholder/>
-    </child>
   </object>
   <object class="GtkMessageDialog" id="error_dialog">
     <property name="can_focus">False</property>
     <property name="modal">True</property>
-    <property name="title" translatable="yes">Chyba</property>
     <property name="destroy_with_parent">True</property>
     <property name="type_hint">notification</property>
     <property name="transient_for">mainwindow</property>
     <property name="message_type">error</property>
     <property name="buttons">close</property>
     <signal name="button-release-event" handler="close_error" swapped="no"/>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
     <child internal-child="vbox">
       <object class="GtkBox">
         <property name="can_focus">False</property>
@@ -260,8 +261,40 @@
         </child>
       </object>
     </child>
-    <child type="titlebar">
-      <placeholder/>
+  </object>
+  <object class="GtkMessageDialog" id="finished_dialog">
+    <property name="can_focus">False</property>
+    <property name="modal">True</property>
+    <property name="destroy_with_parent">True</property>
+    <property name="type_hint">notification</property>
+    <property name="transient_for">mainwindow</property>
+    <property name="buttons">ok</property>
+    <property name="text" translatable="yes">Přenos hudby byl úspěšně dokončen</property>
+    <signal name="button-release-event" handler="close_finished" swapped="no"/>
+    <child internal-child="vbox">
+      <object class="GtkBox">
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="spacing">2</property>
+        <child internal-child="action_area">
+          <object class="GtkButtonBox">
+            <property name="can_focus">False</property>
+            <property name="homogeneous">True</property>
+            <property name="layout_style">end</property>
+            <child>
+              <placeholder/>
+            </child>
+            <child>
+              <placeholder/>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">False</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+      </object>
     </child>
   </object>
 </interface>

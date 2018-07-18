@@ -41,6 +41,16 @@ class PlaylistTransferGUI
     error_window.hide
   end
 
+  def show_finished
+    finished_window = @builder.get_object('finished_dialog')
+    finished_window.show
+  end
+
+  def close_finished
+    finished_window = @builder.get_object('finished_dialog')
+    finished_window.hide
+  end
+
   def cancel
     @exit = true
   end
@@ -100,6 +110,8 @@ class PlaylistTransferGUI
       progressbar.set_fraction(progressbar.fraction + progres_part)
       break if @exit
     end
+
+    show_finished unless @exit
 
     compatible_sw.set_sensitive(true)
     justcopy_sw.set_sensitive(true)
