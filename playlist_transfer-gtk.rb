@@ -68,6 +68,7 @@ class PlaylistTransferGUI
   def run_transfer
     compatible_sw = @builder.get_object('compatible_switch')
     justcopy_sw = @builder.get_object('justcopy_switch')
+    skoda_sw = @builder.get_object('skoda_switch')
     use_musicdir_sw = @builder.get_object('specify_musicdir_switch')
     playlist_diag = @builder.get_object('choose_playlist')
     output_diag = @builder.get_object('choose_output')
@@ -81,6 +82,7 @@ class PlaylistTransferGUI
 
     compatible = compatible_sw.active?
     justcopy = justcopy_sw.active?
+    skoda = skoda_sw.active?
     use_musicdir = use_musicdir_sw.active?
     playlist = Pathname.new(playlist_diag.filename)
     output = Pathname.new(output_diag.filename)
@@ -88,6 +90,7 @@ class PlaylistTransferGUI
 
     compatible_sw.set_sensitive(false)
     justcopy_sw.set_sensitive(false)
+    skoda_sw.set_sensitive(false)
     use_musicdir_sw.set_sensitive(false)
     playlist_diag.set_sensitive(false)
     output_diag.set_sensitive(false)
@@ -97,6 +100,7 @@ class PlaylistTransferGUI
     abort "Cannot read file #{playlist.to_s} . Does it exist?" unless playlist.expand_path.file? && playlist.expand_path.readable?
 
     base_dir = playlist.expand_path.dirname if use_musicdir==false
+    compatible = true if skoda
 
     Dir.chdir(playlist.expand_path.dirname)
     playlist_file = File.open(playlist.expand_path)
@@ -106,7 +110,7 @@ class PlaylistTransferGUI
     input.items.each do |item|
       track_location = Pathname.new(item.segment)
       track=MusicTrack.new(track_location,base_dir)
-      track.transfer(output, compatible, justcopy)
+      track.transfer(output, compatible, justcopy, skoda)
       progressbar.set_fraction(progressbar.fraction + progres_part)
       break if @exit
     end
@@ -115,6 +119,7 @@ class PlaylistTransferGUI
 
     compatible_sw.set_sensitive(true)
     justcopy_sw.set_sensitive(true)
+    skoda_sw.set_sensitive(true)
     use_musicdir_sw.set_sensitive(true)
     playlist_diag.set_sensitive(true)
     output_diag.set_sensitive(true)
@@ -125,6 +130,7 @@ class PlaylistTransferGUI
       show_error(e)
       compatible_sw.set_sensitive(true)
       justcopy_sw.set_sensitive(true)
+      skoda_sw.set_sensitive(true)
       use_musicdir_sw.set_sensitive(true)
       playlist_diag.set_sensitive(true)
       output_diag.set_sensitive(true)

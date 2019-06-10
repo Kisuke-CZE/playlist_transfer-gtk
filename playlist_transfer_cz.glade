@@ -69,10 +69,12 @@
         </child>
         <child>
           <object class="GtkSwitch" id="specify_musicdir_switch">
-            <property name="width_request">65</property>
-            <property name="height_request">31</property>
+            <property name="width_request">60</property>
+            <property name="height_request">20</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
             <signal name="state-set" handler="musicdir_selector_activate" swapped="no"/>
           </object>
           <packing>
@@ -87,6 +89,7 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="halign">start</property>
+            <property name="margin_right">43</property>
             <property name="label" translatable="yes">Vybrat manuálně adresář s hudbou</property>
           </object>
           <packing>
@@ -96,10 +99,12 @@
         </child>
         <child>
           <object class="GtkSwitch" id="compatible_switch">
-            <property name="width_request">65</property>
-            <property name="height_request">41</property>
+            <property name="width_request">60</property>
+            <property name="height_request">20</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -118,14 +123,17 @@
           <packing>
             <property name="left_attach">1</property>
             <property name="top_attach">3</property>
+            <property name="width">3</property>
           </packing>
         </child>
         <child>
           <object class="GtkSwitch" id="justcopy_switch">
-            <property name="width_request">62</property>
-            <property name="height_request">31</property>
+            <property name="width_request">60</property>
+            <property name="height_request">20</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
           </object>
           <packing>
             <property name="left_attach">0</property>
@@ -164,48 +172,6 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="run_button">
-            <property name="label" translatable="yes">Spustit</property>
-            <property name="width_request">257</property>
-            <property name="height_request">89</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="start_transfer" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">2</property>
-            <property name="top_attach">3</property>
-            <property name="width">2</property>
-            <property name="height">2</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkProgressBar" id="progressbar">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-          </object>
-          <packing>
-            <property name="left_attach">0</property>
-            <property name="top_attach">5</property>
-            <property name="width">3</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="cancel_button">
-            <property name="label" translatable="yes">Zrušit</property>
-            <property name="visible">True</property>
-            <property name="sensitive">False</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <signal name="clicked" handler="cancel" swapped="no"/>
-          </object>
-          <packing>
-            <property name="left_attach">3</property>
-            <property name="top_attach">5</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkLabel" id="choose_output_label">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -227,6 +193,76 @@
             <property name="left_attach">1</property>
             <property name="top_attach">1</property>
             <property name="width">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="cancel_button">
+            <property name="label" translatable="yes">Zrušit</property>
+            <property name="visible">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="cancel" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">3</property>
+            <property name="top_attach">6</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkProgressBar" id="progressbar">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">6</property>
+            <property name="width">3</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkLabel" id="skoda_switch_label">
+            <property name="width_request">286</property>
+            <property name="height_request">24</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="halign">start</property>
+            <property name="label" translatable="yes">Kompatabilita s audiosystémem Škoda (Swing)</property>
+          </object>
+          <packing>
+            <property name="left_attach">1</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkSwitch" id="skoda_switch">
+            <property name="width_request">60</property>
+            <property name="height_request">20</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">5</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="run_button">
+            <property name="label" translatable="yes">Spustit</property>
+            <property name="width_request">257</property>
+            <property name="height_request">89</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="receives_default">True</property>
+            <signal name="clicked" handler="start_transfer" swapped="no"/>
+          </object>
+          <packing>
+            <property name="left_attach">2</property>
+            <property name="top_attach">4</property>
+            <property name="width">2</property>
+            <property name="height">2</property>
           </packing>
         </child>
       </object>
@@ -281,6 +317,9 @@
     <property name="buttons">ok</property>
     <property name="text" translatable="yes">Přenos hudby byl úspěšně dokončen</property>
     <signal name="button-release-event" handler="close_finished" swapped="no"/>
+    <child>
+      <placeholder/>
+    </child>
     <child internal-child="vbox">
       <object class="GtkBox">
         <property name="can_focus">False</property>
